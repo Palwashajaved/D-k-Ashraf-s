@@ -1,0 +1,1314 @@
+#preloader {
+    position: fixed; /* Use fixed positioning */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    z-index: 9999; /* High z-index to ensure it's on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.loader-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index:8888;
+  }
+  .loader-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #9b342c;
+    z-index: -1;
+    transition: top 1.2s linear 3.1s;
+  }
+  .loader-container:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #9b342c;
+    z-index: -1;
+    transition: bottom 1.2s linear 3.1s;
+  }
+  .loader-container.done:before {
+    top: -50%;
+  }
+  .loader-container.done:after {
+    bottom: -50%;
+  }
+  
+  .progress-br {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transform-origin: center;
+  }
+  .progress-br .progress__item {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  .progress-br .progress__item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: -3px;
+    margin-left: 0px;
+    width: 50px;
+    height: 50px;
+    border-top: solid 10px #fff;
+    border-right: solid 10px #fff;
+    border-top-right-radius: 100%;
+    transform-origin: left bottom;
+    -webkit-animation: spin 3s linear infinite;
+  }
+  .progress-br.float .progress__item:before {
+    border-top-width: 50px;
+    margin-top: 0px;
+    height: 50px;
+  }
+  
+  .progress-br.float.shadow:before {
+    border-top-width: 50px;
+    margin-top: -50px;
+    height: 50px;
+  }
+  .progress-br.shadow:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 50px;
+    width: 50px;
+    height: 50px;
+    border-top: solid 10px #8b1414;
+    border-right: solid 10px #8b1414;
+    border-top-right-radius: 100%;
+    z-index: -1;
+    transform-origin: left bottom;
+    -webkit-animation: spin 3s linear infinite;
+  }
+  .progress-br.shadow:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    color: #8b1414;
+    text-align: center;
+    line-height: 100px;
+    border: 2px solid #8b1414;
+    border-radius: 50%;
+    margin: -50px 0 0 -0px;
+    z-index: -1;
+    transform-origin: center;
+  }
+  .progress-br.done .progress__item {
+    opacity: 0;
+    -webkit-animation: done 3.1s;
+    transition: opacity 0.3s linear 3.1s;
+  }
+  .progress-br.done .progress__item:before {
+    display: none;
+  }
+  .progress-br.done:before {
+    display: none;
+  }
+  .progress-br.done:after {
+    opacity: 0;
+    -webkit-animation: done 3.1s;
+    transition: opacity 0.15s linear 3.1s;
+  }
+  
+  @-webkit-keyframes done {
+    10% {
+      transform: scale(1.1);
+    }
+    20% {
+      transform: scale(0.9);
+    }
+    30% {
+      transform: scale(1.07);
+    }
+    40% {
+      transform: scale(0.93);
+    }
+    50% {
+      transform: scale(1.04);
+    }
+    60% {
+      transform: scale(0.97);
+    }
+    80% {
+      transform: scale(1.01);
+    }
+    90% {
+      transform: scale(0.99);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  .shadow{
+      box-shadow: none !important;
+  }
+  
+
+
+/*========================Style for the header======================================================= */
+
+/* Style for the header */
+body {
+    margin: 0;
+    padding: 0 ; /* Adds padding to the left and right */
+    }
+.p-container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black; /* Dark background */
+    color: #fff; /* White text */
+    padding: 1rem 2rem;
+}
+
+/* Style for the left side content to be in a row (address and time) */
+.left-content {
+    display: flex;
+    align-items: center;
+    font-size: 18px; /* Larger font size */
+}
+
+/* Style for the right side (icons) */
+.right-content {
+    display: flex;
+    align-items: center;
+    font-size: 18px; /* Larger font size */
+}
+
+/* Additional styling for the icons within the divs */
+.fa, .far, .fab {
+    font-size: 18px; /* Larger icon size */
+     /* Space between icon and text */
+     color: #8b1414  !important;
+}
+/* Social icons styling */
+.social-icons a {
+    color: inherit; /* Inherits color from parent, or you can set a specific color */
+    text-decoration: none; /* Removes underline from links */
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+    display: inline-block; /* Necessary for transform */
+    padding: 8px; /* Space around the icon */
+    border-radius: 50%; /* Circular effect */
+}
+.social-icons a:hover {
+    transform: rotate(360deg); /* Rotates the icon 360 degrees on hover */
+    background-color: #ffffff; /* Changes the background color to white on hover */
+}
+/* Ensure the anchor elements are centered vertically */
+.social-icons {
+    align-items: center;
+    display: flex;
+}
+
+/* Adds space to the right of the phone information */
+.phone {
+    margin-right: 15px; /* Adjust the value as needed */
+    display: flex;
+    align-items: center;
+}
+
+/* Social icon link styling for Facebook */
+a[href*="facebook"] { /* This targets the link that contains 'facebook' in the href */
+    margin-left: 15px; /* Adjust the value as needed */
+    display: flex;
+    align-items: center;
+}
+
+
+/* Adjust margins for alignment */
+.address, .time {
+    margin-right: 20px;
+}
+@media (max-width: 768px) {
+    .p-container-fluid {
+        display: none; /* Hide the entire header on small screens */
+    }
+}
+
+
+/*========================Style for the header======================================================= */
+
+/*========================Style for the navbar======================================================= */
+
+
+.top-navbar .navbar-brand img {
+    height: auto; /* Maintain aspect ratio */
+    width: 80%; /* Decrease width to 80% of the original size */
+    max-width: 120px; /* Set a max-width to control the size */
+    /* You can adjust the 'width' and 'max-width' values as needed */
+    margin-left: 8px;
+}
+
+.top-navbar .bg-light{
+	background: #fdfdfd !important;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-link{
+	color: #040404;
+	font-size: 18px;
+	font-weight: 500;
+   
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item {
+    position: relative;
+    display: inline-block;
+    padding: 15px 0px;
+    margin: 10px 50px; /* Reduced right margin to move text to the left */
+    margin-left: -10px; /* Or any negative value to shift items to the left */
+
+}
+
+
+.top-navbar .navbar-light .navbar-nav .nav-item .nav-link{
+	padding: 6px 0px;
+	position: relative;
+	display: block;
+	line-height: 30px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    bottom: auto;
+    top: 11px;
+    width: 5px;
+	height: 5px;
+    opacity: 0;
+    margin-left: -3px;
+    background-color: #050505;
+	border-radius: 50px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    transition: all 900ms ease;
+    -webkit-transition: all 900ms ease;
+    -ms-transition: all 900ms ease;
+    -o-transition: all 900ms ease;
+    -moz-transition: all 900ms ease;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item .nav-link::before {
+    position: absolute;
+    content: '';
+    left: 0%;
+    bottom: auto;
+    top: -4px;
+    width: 5px;
+	height: 5px;
+	border-radius: 50px;
+    opacity: 0;
+    margin-left: -10px;
+    background-color: #000000;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    transition: all 900ms ease;
+    -webkit-transition: all 900ms ease;
+    -ms-transition: all 900ms ease;
+    -o-transition: all 900ms ease;
+    -moz-transition: all 900ms ease;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item .nav-link::after {
+    position: absolute;
+    content: '';
+    right: 0%;
+    left: auto;
+    bottom: auto;
+    top: -4px;
+    width: 5px;
+	height: 5px;
+	border-radius: 50px;
+	border: none !important;
+    opacity: 0;
+    margin-right: -11px;
+    background-color: #050505;
+    transition: all 900ms ease;
+    -webkit-transition: all 900ms ease;
+    -ms-transition: all 900ms ease;
+    -o-transition: all 900ms ease;
+    -moz-transition: all 900ms ease;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item.active::after{
+	opacity: 1;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link::before {
+	opacity: 1;
+	left: 40%;
+}
+.top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link{
+	color: #8b1414;
+}
+.top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link::after{
+	opacity: 1;
+	right: 40%;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item:hover::after{
+	opacity: 1;
+}
+
+.top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover::before{
+	opacity: 1;
+	left: 40%;
+}
+.top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover{
+	color: #8b1414;
+}
+.top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover::after{
+	opacity: 1;
+	right: 40%;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+}
+
+.dropdown:hover>.dropdown-menu .dropdown-item{
+	padding-left: 10px;
+}
+
+
+.top-navbar.fixed-menu .bg-light {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    visibility: visible;
+    transform: translate(0,0) scale(1);
+    transition: .3s;
+}
+
+.top-navbar .bg-light {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0 18px 0 rgba(0,0,0,.12);
+}
+
+.top-navbar .navbar-light .navbar-nav li .dropdown-menu {
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.12);
+    border: none;
+    border-radius: 0px;
+    margin: 0px;
+	padding: 10px;
+}
+
+.top-navbar .navbar-light .navbar-nav li .dropdown-menu a:hover{
+	background: #8b1414;
+	color: #ffffff;
+}
+
+.navbar-right li a{
+	position: relative;
+	font-size: 18px;
+	display: inline-block;
+}
+.navbar-right li a,
+.navbar-right li a.hover-btn-new::after {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.navbar-right li a.hover-btn-new::before,
+.navbar-right li a.hover-btn-new::after {
+  background: #8b1414;
+  content: '';
+  position: absolute;
+  z-index: 1;
+}
+
+.navbar-right li a.hover-btn-new:hover span {
+  color: #000000;
+}
+.navbar-right li a.hover-btn-new::before {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.navbar-right li a.hover-btn-new::after {
+  background: #000000 !important;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.navbar-right li a.hover-btn-new span{
+	position: relative;
+	z-index: 2;
+	color: #333333;
+}
+.navbar-right li a.hover-btn-new:hover:after {
+  height: 0;
+  left: 50%;
+  top: 50%;
+  width: 0;
+}
+
+
+.navbar-toggler{
+	background: #fffefe;
+	border-radius: 0px;
+	padding: 10px 10px;
+}
+
+.navbar-toggler .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+	background: #333333;
+}
+.navbar-toggler .icon-bar + .icon-bar {
+    margin-top: 4px;
+}
+
+.navbar-toggler:hover{
+	background: #8b1414;
+}
+
+.navbar-toggler:hover .icon-bar{
+	background: #f6f3f3;
+}
+
+@media (max-width: 768px) {
+    .top-navbar .navbar-brand img {
+        width: 60%; /* Further decrease width on smaller screens */
+        max-width: 100px; /* Adjust as needed */
+    }
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 576px) { /* or whatever breakpoint you are using for mobile */
+    .top-navbar .navbar-light .navbar-nav .nav-item {
+        padding-left: 15px; /* Add padding to move items away from the edge */
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+}
+
+
+/*========================Style for the navbar======================================================= */
+
+
+/*========================Style for the hero======================================================= */
+
+
+/* Bootstrap 5 Carousel Customizations */
+.carousel-caption {
+    position: absolute;
+    top: 50%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-caption h1 {
+    color: #8b1414; /* Your chosen color */
+    font-size: 50px;
+    margin-bottom: 20px;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.carousel-caption h4{
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.carousel-caption p {
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.carousel-item {
+    transition: opacity 0.5s ease; /* Smooth transition for fade effect */
+    width: 100%; /* Full width */
+    height: 100%; /* Adjust height automatically */
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 4rem; /* Size of the button */
+    height: 4rem; /* Size of the button */
+    margin: auto;
+    border-radius: 50%; /* Circular shape */
+    background-color: #8b1414; /* Background color */
+    border: none; /* Remove border */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    display: flex;
+   margin-left: 15px;
+   margin-right: 15px;
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: #8b1414; /* Slightly darker on hover */
+}
+
+/* Button Styles */
+.button-74 {
+    background-color: #8b1414;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    color: #000000;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 50px;
+    padding: 0 12px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    touch-action: manipulation;
+    transition: all 0.3s;
+}
+
+.button-74:hover {
+    background-color: #fff;
+    color: #8b1414;
+}
+
+/* Media Queries */
+@media (max-width: 800px) {
+    .carousel-caption {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the caption */
+        text-align: center;
+        
+    }
+
+    .carousel-caption h1 {
+        font-size: 20px; /* Adjust the font size as needed */
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .carousel-caption h4 {
+        font-size: 15px; /* Adjust the font size as needed */
+      
+    }
+    .carousel-caption p {
+        display: none; /* Hide the entire header on small screens */
+
+    }
+
+    .carousel-item {
+        height: auto; /* Set height to auto to avoid fixed height issues */
+    }
+    
+    .button-74 {
+        font-size: 14px; /* Reduced font size */
+    line-height: 30px; /* Reduced line height */
+    padding: 5px 8px;
+        
+    }
+
+    /* Adjust the position of carousel controls */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 3rem; /* Smaller size for the button */
+        height: 3rem; /* Smaller size for the button */
+      
+        top: 30%; /* Move the buttons up */
+        transform: translateY(-50%); /* Center them vertically relative to their new position */
+    
+    }
+
+    .carousel-control-prev {
+        left: 10px; /* Closer to the edge */
+    }
+
+    .carousel-control-next {
+        right: 10px; /* Closer to the edge */
+    }
+}
+
+@media (max-width: 520px) {
+    .carousel-caption h1 {
+        font-size: 20px; /* Smaller font size for very small screens */
+    }
+ 
+        .carousel-caption {
+            top: 30%; /* Move up more for very small screens */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Keep it centered */
+            text-align: center;
+        }
+    .carousel-caption p {
+        font-size: 12px; /* Smaller paragraph size for very small screens */
+    }
+
+    .button-74 {
+        font-size: 14px; /* Even smaller font size for very small screens */
+        line-height: 35px; /* Adjust line height for very small screens */
+        padding: 0 8px; /* Smaller padding for very small screens */
+        border-radius: 20px; /* Smaller border radius for very small screens */
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 2.5rem; /* Even smaller buttons for very small screens */
+        height: 2.5rem; /* Even smaller buttons for very small screens */
+    }
+}
+
+
+/*========================Style for the hero======================================================= */
+
+
+/*========================achievements======================================================= */
+
+.section.lb.page-section {
+    background: #f5f5f5;
+    padding: 50px 0;
+  }
+  
+  .section-title.row.text-center {
+    margin-bottom: 30px;
+  }
+  
+  .section-title .col-md-8.offset-md-2 h3 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .section-title .col-md-8.offset-md-2 p.lead {
+    color: #666;
+    font-size: 1.2rem;
+  }
+  
+  .timeline {
+    position: relative;
+
+  }
+
+  .timeline__items .timeline__item .timeline__content {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+    padding: 20px; /* Add padding inside the box */
+    box-sizing: border-box; /* Include padding and border in the box's dimensions */
+  }
+  
+  .timeline__items .timeline__item:hover .timeline__content {
+    background-color: black; /* Change background color to black on hover */
+    color: white; /* Change text color to white on hover */
+    transform: translateY(-50px); /* Pop up from its position on hover */
+    border: 3px solid #8b1414; /* Red border on hover */
+    box-shadow: 0 4px 8px rgba(119, 14, 14, 0.3); /* Slight shadow for popping effect on hover */
+  }
+  
+  .timeline__wrap .timeline__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .timeline__wrap .timeline__items .timeline__item {
+    background: #f9f8f8;
+    padding: 20px;
+    border: 3px solid #8b1414; /* Red border on hover */
+    position: relative;
+    color: #0f0f0f;
+    width: 22%;
+    box-shadow: 0 5px 15px rgba(119, 14, 14, 0.3);
+
+  }
+  
+  .timeline__wrap .timeline__items .timeline__item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    width: 60px;
+    height: 4px;
+    background: #8b1414;
+    transform: translateY(-50%);
+  }
+  
+  .timeline__wrap .timeline__items .timeline__item:last-child::after {
+    display: none;
+  }
+  
+  .timeline__wrap .timeline__items .timeline__item .timeline__content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .timeline__wrap .timeline__items .timeline__item .timeline__content p {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .section-title h3 {
+        font-size: 2rem; /* Smaller title for small screens */
+    }
+  
+    .section-title p.lead {
+        font-size: 1rem; /* Smaller text for the lead paragraph */
+    }
+  
+    .timeline__wrap .timeline__items {
+        flex-direction: column; /* Stack timeline items vertically */
+    }
+  
+    .timeline__wrap .timeline__items .timeline__item {
+        width: 100%; /* Use the full width */
+        max-width: 80%; /* Then restrict it to 80%, centering it with margin auto */
+        margin: 20px auto; /* Add space and center items */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+  
+    .timeline__wrap .timeline__items .timeline__item::after {
+        display: none; /* Hide the pseudo-element arrow */
+    }
+  
+    .timeline__wrap .timeline__items .timeline__item .timeline__content h2 {
+        font-size: 1.2rem; /* Smaller heading for small screens */
+    }
+  
+    .timeline__wrap .timeline__items .timeline__item .timeline__content p {
+        font-size: 0.9rem; /* Smaller paragraph text for small screens */
+    }
+  
+    /* Ensure the .container is not causing an overflow */
+    .container {
+        width: 100%; /* Full width */
+        max-width: 100%; /* Maximum width to 100% */
+        padding: 0 15px; /* Adjust padding to ensure it's within the view */
+    }
+  }
+  
+/*========================achievements======================================================= */
+
+/*========================courses======================================================= */
+
+
+
+.section-title {
+    /* Other styles... */
+    text-align: center; /* Center aligns the text for the title */
+  }
+  
+  .section-title .icon {
+    /* Other styles... */
+    display: block; /* This makes the div behave like a block element */
+    text-align: center; /* Center aligns the icon */
+   /* This sets the icon color to orange */
+    margin-top: 15px; /* Adds spacing between the paragraph and icon */
+  }
+  
+  
+  .fa-paper-plane {
+    color: #8b1414; /* This ensures the icon inherits the color from its parent */
+  }
+  
+  
+  .course{
+    background: #F8F8F8;
+    padding: 50px 0;
+  }
+  .single-course {
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%; /* Adjust width as needed */
+    min-height: 300px; /* Provides a minimum height */
+
+    margin-bottom: 30px; /* Space between events */
+  }
+  
+  .single-course .course-img img {
+    width: calc(100% - 20px) !important;
+    height: auto !important;
+    margin: 10px !important;
+    display: block !important;
+  }
+  
+  .course .single-course {
+    position: relative;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(234, 7, 7, 0.25);
+    overflow: hidden; /* This will contain the image within the bounds of the event */
+  }
+  
+  .course .single-course .course-img {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .course .course-img {
+    position: relative;
+    /* Other styles */
+  }
+  .course .single-course .course-img img {
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .course .single-course:hover .course-img img {
+    transform: scale(1.1);
+  }
+  
+  .course-content {
+    margin-top: 0px; /* Adjust this value as needed to move content up */
+    position: relative; /* Ensure the content is positioned relative to its normal position */
+    z-index: 10; /* Ensure the content is above the image if they overlap */
+  }
+  
+  .course .course-content {
+    padding: 20px;
+  }
+  
+  .course .course-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .course .course-title a {
+    color: #252525;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 767px) {
+    .single-courset .course-img {
+      margin-bottom: 0; /* Removes any margin below the image */
+    }
+  
+    .single-course .course-content {
+      margin-top: 0; /* Removes any margin above the event content */
+    }
+  
+    .single-course {
+      min-height: auto; /* Allows the container to grow with the content on small screens */
+    }
+  }
+  
+  
+  
+/*=======================courses======================================================= */
+
+
+
+
+
+
+
+.messages-section {
+    background: url('img1.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 50px 0;
+  }
+  
+  .p-message {
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    margin-bottom: 30px; /* Adjust as necessary */
+  }
+
+  .l-message {
+    display: flex;
+    align-items: center;
+    justify-content:right;
+    margin-bottom: 30px; /* Adjust as necessary */
+  }
+  
+  .message-photo {
+    border-radius: 50%;
+    width: 100px; /* Adjust as necessary */
+    height: 100px; /* Adjust as necessary */
+    object-fit: cover; /* This will ensure the image covers the area without stretching */
+    padding-bottom: 5px;
+    margin-right: 15px; /* Adjust the value to add the desired space */
+}
+  
+  .message-content {
+    max-width: 45%; /* Adjust as necessary */
+    text-align: left;
+  }
+  
+  .message-content p {
+    color: #fffcfc; /* Adjust as necessary */
+    margin-bottom: 20px; /* Adjust as necessary */
+  }
+  
+  .message-content h3 {
+    color: #ffffff; /* Adjust as necessary */
+    font-weight: bold;
+  }
+  
+  .message-content h4 {
+    color: #ffffff; /* Adjust as necessary */
+    font-weight: normal;
+  }
+  
+  .container {
+    max-width: 1200px; /* Adjust as necessary */
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .message {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .message-content {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  
+    .message-photo {
+      margin: 0 auto; /* Center the image */
+    }
+  }
+  
+/*=======================extra====================================================== */
+
+.section.db {
+    background-color: #ffffff; /* Replace with the actual color from the image */
+    color: #030303; /* Replace with the actual text color from the image */
+    padding: 50px 0; /* Adjust the padding as needed */
+  }
+  
+  .container {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Centers the container */
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between; /* This will space out your columns evenly */
+  }
+  
+  .col-lg-4, .col-md-4 {
+    width: 30%; /* Adjust the width for responsiveness if needed */
+    box-sizing: border-box;
+  }
+  
+  .stat-count {
+    text-align: center; /* Aligns the content to center */
+    padding: 20px; /* Adjust padding as needed */
+    margin-bottom: 30px; /* Adjust margin as needed */
+  }
+  
+  .stat-timer {
+    font-size: 3em; /* Adjust font size as needed */
+    font-weight: bold; /* Adjust font weight as needed */
+    margin: 0 0 20px; /* Adjust spacing as needed */
+  }
+  
+  .stat-count h3 {
+    font-size: 1.5em; /* Adjust font size as needed */
+    margin: 0 0 10px; /* Adjust spacing as needed */
+  }
+  
+  .stat-count h3 i {
+    margin-right: 10px; /* Space between icon and text */
+  }
+  
+  .stat-count p {
+    font-size: 1em; /* Adjust font size as needed */
+  }
+  
+  h3 i {
+    color: #8b1414; /* This will make the icon red */
+    font-size: 40px;
+
+}
+
+@media (max-width: 576px) {
+    .col-lg-4, .col-md-4, .col-sm-12 {
+        width: 100%; /* Forces full width on small screens */
+        margin-bottom: 1rem; /* Adds space between stacked items */
+    }
+}
+   
+/*=======================extra====================================================== */
+/*========================testinomials======================================================= */
+
+
+.gradient-custom {
+    background: radial-gradient(50% 123.47% at 50% 50%, #8b1414 0%, rgb(156, 77, 58) 100%),
+      linear-gradient(121.28deg, #8b1414 0%, #8b1414 100%),
+      linear-gradient(360deg, #5f4444 0%, #8b1414 100%),
+      radial-gradient(100% 164.72% at 100% 100%, #d05252 0%, #8b1414 100%),
+      radial-gradient(100% 148.07% at 0% 0%, #eeeee5 0%, #8b1414 100%);
+    background-blend-mode: screen, color-dodge, overlay, difference, normal;
+ /* Remove inner space at the top */
+   
+  }
+   
+  .carousel-indicators {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+/* Base styles for custom carousel controls */
+.custom-carousel-control-prev,
+.custom-carousel-control-next {
+    position: absolute; /* Take out of document flow and position relative to the carousel */
+    top: 50%; /* Center vertically in the middle of the carousel */
+    transform: translateY(-50%); /* Align the middle of the button with the middle of the carousel vertically */
+    z-index: 10; /* Place them above the carousel items */
+    width: 4rem; /* Size of the button */
+    height: 4rem; /* Size of the button */
+    border-radius: 50%; /* Circular shape */
+    background-color: #8b1414; /* Background color */
+    border: none; /* Remove border */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    display: flex;
+}
+
+/* Position each control on the appropriate side */
+.custom-carousel-control-prev {
+    left: 15px; /* Position to the left */
+}
+
+.custom-carousel-control-next {
+    right: 15px; /* Position to the right */
+}
+
+/* Hover effect for buttons */
+.custom-carousel-control-prev:hover,
+.custom-carousel-control-next:hover {
+    background-color: #a32121; /* Change color for hover state */
+}
+
+/* Media Queries for responsive adjustments */
+@media (max-width: 800px) {
+    .custom-carousel-control-prev,
+    .custom-carousel-control-next {
+        width: 3rem; /* Smaller size for the button */
+        height: 3rem; /* Smaller size for the button */
+    }
+
+    /* Adjust positions if needed */
+    .custom-carousel-control-prev {
+        left: -5px; /* Closer to the edge */
+      top:20%;
+    }
+
+    .custom-carousel-control-next {
+        right: -5px; /* Closer to the edge */
+        top:20%;
+
+    }
+}
+
+@media (max-width: 520px) {
+    .custom-carousel-control-prev,
+    .custom-carousel-control-next {
+        width: 2.5rem; /* Even smaller buttons for very small screens */
+        height: 2.5rem; /* Even smaller buttons for very small screens */
+        
+    }
+}
+
+  
+  
+  
+/*========================testinomials======================================================= */
+
+
+/*========================footer======================================================= */
+.footer {
+    background-color: #020202; /* Dark blue background */
+    color: #ffffff; /* White text color */
+    padding: 50px 0; /* Padding above and below */
+    font-family: 'Arial', sans-serif; /* Font family (update as needed) */
+    
+  }
+  
+  .footer .container {
+    display: flex;
+    justify-content: space-between; /* Space out columns */
+    align-items: flex-start; /* Align items to the top */
+    max-width: 1200px; /* Max width of the content */
+    margin: 0 auto; /* Center the content */
+  }
+  
+  .footer h3 {
+    font-size: 1.5rem; /* Title font size */
+    margin-bottom: 1rem; /* Space below the title */
+    color: #8b1414;
+  }
+  
+  .footer p {
+    font-size: 0.9rem; /* Paragraph font size */
+    line-height: 1.6; /* Line height */
+    margin-bottom: 1.5rem; /* Space below the paragraph */
+  }
+  
+  .footer ul {
+    list-style: none; /* No bullets */
+    padding: 0; /* No padding */
+  }
+  
+  
+  .footer ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+  }
+  
+  .footer ul li a {
+    color: #ffffff; /* White link color */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s; /* Transition for hover effect */
+  }
+  
+  .footer ul li a:hover {
+    color: #8b1414; /* Gold color on hover */
+  }
+  
+  .footer .social-icons {
+    margin-top: 2rem; /* Space above the icons */
+  }
+  
+  
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .footer .container {
+      flex-direction: column; /* Stack columns vertically */
+      align-items: center; /* Center items */
+    }
+  
+    .footer .container > div {
+      margin-bottom: 1rem; /* Space between stacked columns */
+    }
+  }
+  
+  .footer-right .footer-links-soi {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Align icons in a row */
+    justify-content: center; /* Center the icons */
+  }
+  
+  .footer-right .footer-links-soi li {
+    margin: 0 10px; /* Space between icons */
+  }
+  
+  .fa-facebook .fa-twitter .fa-linkedin .fa-instagram{
+    margin: 0 18px; /* Space between icons */
+
+  }
+  .footer-right .footer-links-soi li a {
+    color: inherit; /* Inherits color from parent, or you can set a specific color */
+    text-decoration: none; /* Removes underline from links */
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+    display: inline-block; /* Necessary for transform */
+    padding: 8px; /* Space around the icon */
+    border-radius: 50%; /* Circular effect */
+  }
+  
+  .footer-right .footer-links-soi li a:hover {
+    transform: rotate(360deg); /* Rotates the icon */
+    background-color: #ffffff; /* White background */
+    color: #333; /* Change the icon color on hover if needed */
+  }
+  
+/* Copyrights footer styling */
+.copyrights {
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark text for readability */
+    text-align: center; /* Center text */
+    padding: 10px 0; /* Padding above and below the text */
+    font-family: 'Arial', sans-serif; /* Consistent font-family */
+    border-top: 1px solid #eaeaea; /* Light border on top for some visual separation */
+}
+
+.footer-distributed .footer-center {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.footer-company-name {
+    margin: 0; /* Remove any default margin */
+    font-size: 18px; /* Set font size */
+}
+
+.footer-company-name a {
+    color: #8b1414; /* Dark text for links */
+    text-decoration: none; /* No underline for links */
+    transition: color 0.3s ease; /* Smooth transition for color change on hover */
+}
+
+.footer-company-name a:hover {
+    color: #080808; /* Color change on hover */
+}
+#scroll-to-top {
+    position: fixed; /* Fixed position to stay in place when scrolling */
+    bottom: 20px; /* 20px from the bottom */
+    right: 20px; /* 20px from the right */
+    background-color: #f7f5f5; /* Replace with your desired color */
+    color: rgb(2, 2, 2); /* Color of the arrow icon */
+    padding: 10px 15px; /* Padding inside the button */
+    border-radius: 50%; /* Round shape */
+    text-align: center; /* Align the icon in the center */
+    box-shadow: 0 2px 5px rgba(116, 10, 10, 0.3); /* Shadow for 3D effect */
+    cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+    z-index: 1000; /* Ensure it's above other elements */
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+    display: none; /* Initially hidden */
+  }
+  
+  #scroll-to-top:hover {
+    transform: translateY(-5px); /* Moves the button up a bit when hovered */
+    background-color: #010101; /* Slightly darker shade on hover */
+  }
+  
+  
+/*========================footer======================================================= */
